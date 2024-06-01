@@ -1,5 +1,5 @@
 import { link } from "fs";
-import React from "react";
+import React, { cache } from "react";
 
 interface User {
   id: number;
@@ -7,7 +7,9 @@ interface User {
 }
 
 const UsersPage = async () => {
-  const res = await fetch("https://jsonplaceholder.typicode.com/users");
+  const res = await fetch("https://jsonplaceholder.typicode.com/users", {
+    next: { revalidate: 10 },
+  });
   const users: User[] = await res.json();
 
   return (
