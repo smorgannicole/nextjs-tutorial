@@ -1,0 +1,7 @@
+/* cant use hyphens when naming these classes */
+/* use camelCase */
+
+.card {
+  padding: 1rem;
+  border: 1px solid #ccc;
+}
