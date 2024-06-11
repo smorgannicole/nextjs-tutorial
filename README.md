@@ -1,5 +1,8 @@
 The tutorial that I followed along with can be found [here](https://www.youtube.com/watch?v=ZVnjOPwW4ZA)
 
+Table: [Daisy UI](https://daisyui.com/)
+Table Sorting: [Fast-sort](https://www.npmjs.com/package/fast-sort)
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
