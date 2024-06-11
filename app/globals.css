@@ -14,5 +14,12 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  padding: 1rem;
 }
+
+@layer base {
+  h1 {
+    @apply font-extrabold text-2xl mb-3;
+  }
+}
+/* to overwrite styles in base on line 1 (it defaults to unstyled heading tags) */
+/* @apply is a directive to apply any styling we want */
