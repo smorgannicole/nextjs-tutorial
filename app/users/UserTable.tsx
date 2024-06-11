@@ -21,7 +21,8 @@ const UserTable = async ({ sortOrder }: Props) => {
   const sortedUsers = sort(users).asc(
     sortOrder === "email" ? (user) => user.email : (user) => user.name
   );
-  // passing users arr
+  // passing users arr to sort fxn
+  // asc sorts a -> z
   // sorts name by default
 
   return (
