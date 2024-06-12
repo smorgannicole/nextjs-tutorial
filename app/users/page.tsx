@@ -1,4 +1,4 @@
-import React, { cache } from "react";
+import React, { cache, Suspense } from "react";
 import UserTable from "./UserTable";
 import Link from "next/link";
 
@@ -16,7 +16,15 @@ const UsersPage = async ({ searchParams: { sortOrder } }: Props) => {
       <Link href="/users/new" className="btn">
         New User
       </Link>
-      <UserTable sortOrder={sortOrder} />
+      <Suspense fallback={<p>Loading...</p>}>
+        {/* suspense is a react 18 feature that can be used to show a fallback UI while component is being rendered */}
+        {/* fallback prop is what we want to display while we wait */}
+        {/* server generates loading page and sends it to client, but it doesn't close the connection; it doesn't terminate the request-response lifecycle... */}
+        {/* it will then wait for table component to render and then send addtl data back to client. this is called STREAMING (same technology as streaming videos, audios, etc) */}
+        {/* after all data has been sent and client has a fully rendered page, server closes the connection */}
+        {/* users get faster initial response (seeing loading state). then content updates in place as it becomes ready, improving perceived performance */}
+        <UserTable sortOrder={sortOrder} />
+      </Suspense>
     </>
   );
 };
