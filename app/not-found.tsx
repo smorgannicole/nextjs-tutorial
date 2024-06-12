@@ -5,7 +5,8 @@ import React from "react";
 // will be rendered any time user goes to page that doesn't exist
 
 const NotFoundPage = () => {
-  return <div>The requested page doesn't exist.</div>;
+  return <div>The requested page doesn&apos;t exist.</div>;
+  // production build doesn't like the apostrophe. It reccommends &apos;
 };
 
 export default NotFoundPage;
