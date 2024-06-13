@@ -32,3 +32,13 @@ export function GET(request: NextRequest) {
   //   }
   // ]
 }
+
+// to create user, we send request to users endpoint and include user object in body of request
+export async function POST(request: NextRequest) {
+  const body = await request.json();
+  // validate -> if invalid return 400 -> else return data that was created
+  if (!body.name)
+    return NextResponse.json({ error: "Name is required" }, { status: 400 });
+
+  return NextResponse.json({ id: 1, name: body.name }, { status: 201 });
+}
