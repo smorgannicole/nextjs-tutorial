@@ -1,5 +1,5 @@
-import { error } from "console";
 import { NextRequest, NextResponse } from "next/server";
+import schema from "../schema";
 
 // interface Props {
 //   params: { id: number };
@@ -34,8 +34,18 @@ export async function PUT(
 ) {
   // validate request body -> if invalid, return 400 -> else, fetch user by given id -> if doesn't exist, return 404 -> else, update user in db and return updated user
   const body = await request.json();
-  if (!body.name)
-    return NextResponse.json({ error: "Name is required" }, { status: 400 });
+  const validation = schema.safeParse(body);
+  // parse method throws an exception (if there's any validation issue, will raise an error which needs to be caught/handled in some way) whereas...
+  // safeParse doesn't yell at us, just returns obj that contains result of validation
+  if (!validation.success)
+    return NextResponse.json(validation.error.errors, { status: 400 });
+  // don't want to hard code error message; want to return errors detected by zod
+
+  // if (!body.name)
+  //   return NextResponse.json({ error: "Name is required" }, { status: 400 });
+  // this conditional is validating user obj sent with request...
+  // works for simple objs, but for more complex objs, we'll end up with too many if statements...
+  // in those scenarios, better to use a validation library (like Zod)
 
   if (params.id > 10)
     return NextResponse.json({ error: "User not found" }, { status: 404 });

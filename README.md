@@ -1,7 +1,8 @@
 The tutorial that I followed along with can be found [here](https://www.youtube.com/watch?v=ZVnjOPwW4ZA)
 
-Table & loading animation: [Daisy UI](https://daisyui.com/)
-Table Sorting: [Fast-sort](https://www.npmjs.com/package/fast-sort)
+- Table & loading animation: [Daisy UI](https://daisyui.com/)
+- Table sorting: [Fast-sort](https://www.npmjs.com/package/fast-sort)
+- Validation library: [Zod](https://zod.dev/)
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
