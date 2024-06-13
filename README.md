@@ -3,6 +3,9 @@ The tutorial that I followed along with can be found [here](https://www.youtube.
 - Table & loading animation: [Daisy UI](https://daisyui.com/)
 - Table sorting: [Fast-sort](https://www.npmjs.com/package/fast-sort)
 - Validation library: [Zod](https://zod.dev/)
+- Database engine: [MySQL](https://www.mysql.com/)
+- Database management: [DataGrip](https://www.jetbrains.com/datagrip/)
+- ORM: [Prisma](https://www.prisma.io/)
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
