@@ -42,3 +42,17 @@ export async function PUT(
 
   return NextResponse.json({ id: 1, name: body.name });
 }
+
+// to delete a user, send delete request to the endpoint that represents individual user
+export function DELETE(
+  request: NextRequest,
+  { params }: { params: { id: number } }
+) {
+  // fetch user from db -> if not found, return 404 -> else, delete user from db and return 200 response
+  if (params.id > 10)
+    return NextResponse.json({ error: "User not found" }, { status: 404 });
+
+  return NextResponse.json({});
+  // can return empty response ^^^ or include user that was deleted...
+  // no right or wrong- different apps have different requirements
+}
