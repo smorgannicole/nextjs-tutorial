@@ -1,3 +1,4 @@
+import { error } from "console";
 import { NextRequest, NextResponse } from "next/server";
 
 // interface Props {
@@ -22,4 +23,22 @@ export function GET(
   // {
   //   "error": "User not found"
   // }
+}
+
+// to update a user, should send request to endpoint that represents individual user via id and include updated user obj
+// PUT for replacing obj, PATCH for updating one or more properties
+
+export async function PUT(
+  request: NextRequest,
+  { params }: { params: { id: number } }
+) {
+  // validate request body -> if invalid, return 400 -> else, fetch user by given id -> if doesn't exist, return 404 -> else, update user in db and return updated user
+  const body = await request.json();
+  if (!body.name)
+    return NextResponse.json({ error: "Name is required" }, { status: 400 });
+
+  if (params.id > 10)
+    return NextResponse.json({ error: "User not found" }, { status: 404 });
+
+  return NextResponse.json({ id: 1, name: body.name });
 }
