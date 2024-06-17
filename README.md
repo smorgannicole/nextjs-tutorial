@@ -6,6 +6,7 @@ The tutorial that I followed along with can be found [here](https://www.youtube.
 - Database engine: [MySQL](https://www.mysql.com/)
 - Database management: [DataGrip](https://www.jetbrains.com/datagrip/)
 - ORM: [Prisma](https://www.prisma.io/)
+- Cloud platform: [Cloudinary](https://cloudinary.com/)
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
