@@ -23,11 +23,12 @@ model User {
   // can give it a default value using the default attribute...
   // it should be called and given a default value like 1234 (scalar) or...
   // the autoincrement fxn can be used- db will generate new ids for us
-  email     String  @unique
+  email        String   @unique
   // @unique is another attr used to make sure we're not storing users with more than one of same email
-  name      String
-  followers Int     @default(0)
-  isActive  Boolean @default(true)
+  name         String
+  followers    Int      @default(0)
+  isActive     Boolean  @default(true)
+  registeredAt DateTime @default(now())
 }
 
 // $ npx prisma- to reformat table and make more readable
