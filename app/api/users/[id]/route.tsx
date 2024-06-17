@@ -37,7 +37,7 @@ export async function GET(
 
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: number } }
+  { params }: { params: { id: string } }
 ) {
   // validate request body -> if invalid, return 400 -> else, fetch user by given id -> if doesn't exist, return 404 -> else, update user in db and return updated user
   const body = await request.json();
@@ -54,10 +54,23 @@ export async function PUT(
   // works for simple objs, but for more complex objs, we'll end up with too many if statements...
   // in those scenarios, better to use a validation library (like Zod)
 
-  if (params.id > 10)
+  const user = await prisma.user.findUnique({
+    where: {
+      id: parseInt(params.id),
+    },
+  });
+
+  if (!user)
     return NextResponse.json({ error: "User not found" }, { status: 404 });
 
-  return NextResponse.json({ id: 1, name: body.name });
+  const updatedUser = await prisma.user.update({
+    where: { id: user.id },
+    data: {
+      name: body.name,
+      email: body.email,
+    },
+  });
+  return NextResponse.json(updatedUser);
 }
 
 // to delete a user, send delete request to the endpoint that represents individual user

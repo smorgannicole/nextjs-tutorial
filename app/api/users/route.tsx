@@ -4,6 +4,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import schema from "./schema";
 import prisma from "@/prisma/client";
+import { error } from "console";
 
 export async function GET(request: NextRequest) {
   // though we aren't using request: NextRequest we can't remove it, bc...
@@ -41,5 +42,22 @@ export async function POST(request: NextRequest) {
   // if (!body.name)
   //   return NextResponse.json({ error: "Name is required" }, { status: 400 });
 
-  return NextResponse.json({ id: 1, name: body.name }, { status: 201 });
+  const user = await prisma.user.findUnique({
+    // before user is created (and potentially gets 500 error if email is already in use)
+    where: {
+      email: body.email,
+    },
+  });
+
+  if (user)
+    return NextResponse.json({ error: "User already exists" }, { status: 400 });
+
+  const newUser = await prisma.user.create({
+    data: {
+      name: body.name,
+      email: body.email,
+      // don't need other properties bc they have a default val assigned
+    },
+  });
+  return NextResponse.json(newUser, { status: 201 });
 }
