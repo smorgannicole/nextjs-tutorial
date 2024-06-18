@@ -25,6 +25,11 @@ const UploadPage = () => {
       {/* arbitrary height and width */}
       <CldUploadWidget
         uploadPreset="eoua90bw"
+        options={{
+          sources: ["local", "url"],
+          multiple: false,
+          maxFiles: 5,
+        }}
         onUpload={(result, widget) => {
           // onUpload: event handler triggered after upload attempt
           // result: result obj returned by Cloudinary- contains info about upload
