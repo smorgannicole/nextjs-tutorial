@@ -12,6 +12,7 @@ const NavBar = () => {
       {/* so, when navigating to another page, next.js wont make a request to backend again, it will reference client cache... */}
       {/* caches only exists for one session and clears after full page reload */}
       <Link href="/users">Users</Link>
+      <Link href="/api/auth/signin">Login</Link>
     </div>
   );
 };
