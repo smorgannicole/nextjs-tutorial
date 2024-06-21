@@ -1,7 +1,13 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
+import { PrismaAdapter } from "@next-auth/prisma-adapter";
+// adapters allow us to store user data in a db...
+// if we use an adapter, when someone logs in, next auth will automatically store their data in our db
+
+import prisma from "@/prisma/client";
 
 export const authOptions = {
+  adapter: PrismaAdapter(prisma),
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID!,
