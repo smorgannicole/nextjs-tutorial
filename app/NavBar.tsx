@@ -25,7 +25,15 @@ const NavBar = () => {
       {/* caches only exists for one session and clears after full page reload */}
       <Link href="/users">Users</Link>
       {status === "loading" && <div>Loading...</div>}
-      {status === "authenticated" && <div>{session.user!.name}</div>}
+      {status === "authenticated" && (
+        <div>
+          {session.user!.name}
+          <Link href="/api/auth/signout" className="ml-5">
+            Sign Out
+          </Link>
+          {/* when clicked, link takes user to auto generated sign out page provided by next auth */}
+        </div>
+      )}
       {/* ! bc when status is loading we don't have user obj, but... */}
       {/* if status === "authenticated" we will always have a user here */}
       {status === "unauthenticated" && (
