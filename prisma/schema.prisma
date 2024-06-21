@@ -77,6 +77,8 @@ model User {
   name          String?
   email         String?   @unique
   emailVerified DateTime? @map("email_verified")
+  hashedPassword String?
+  // made optional jic user logs in w google (bc then this field won't be set)
   image         String?
   accounts      Account[]
   sessions      Session[]
