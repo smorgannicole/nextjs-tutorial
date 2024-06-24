@@ -8,6 +8,7 @@ The tutorial that I followed along with can be found [here](https://www.youtube.
 - ORM: [Prisma](https://www.prisma.io/)
 - Cloud platform: [Cloudinary](https://cloudinary.com/)
 - Authentication: [NextAuth.js](https://next-auth.js.org/)
+- Creating and sending emails: [React Email](https://react.email/)
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
